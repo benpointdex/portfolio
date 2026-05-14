@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Playfair+Display:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Playfair Display", serif;
+
+  --color-bg: #F4F2EB;
+  --color-bg-dark: #131410;
+  --color-surface: #E7E3D5;
+  --color-accent: #52563F;
+  --color-accent-light: #D7D2C3;
+  --color-muted: #9CA3AF;
+  --color-text: #111827;
+  --color-text-light: #6B7280;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: "Inter", sans-serif;
+  background-color: #F4F2EB;
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logo-carousel-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 16px 0;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
+}
+
+.logo-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 60s linear infinite;
+  gap: 16px;
+}
+
+.logo-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 40px;
+  filter: grayscale(1) brightness(0.7);
+  opacity: 0.5;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.logo-item:hover {
+  filter: grayscale(0) brightness(1);
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.logo-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.logo-name {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text);
+  letter-spacing: 0.02em;
+}
+
+
