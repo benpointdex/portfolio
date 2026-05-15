@@ -46,8 +46,10 @@ const Home = () => (
     <div style={{
       marginLeft: '28.5%',
       width: '71.5%',
-      padding: '40px 48px',
-      minHeight: '100vh',
+      padding: '80px 80px 0',
+      height: '100vh',
+      position: 'relative',
+      overflow: 'hidden', // clips the off-screen cards sliding in/out
     }}>
       <Projects />
     </div>
