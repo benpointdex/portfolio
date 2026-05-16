@@ -28,7 +28,7 @@ const Sidebar = () => {
           S
         </div>
 
-        {/* Social Icons moved to top parallel with Avatar */}
+        {/* Social Icons Parallel with Avatar */}
         <div style={{ display: 'flex', gap: '16px' }}>
           <a
             href="https://github.com/benpointdex"
@@ -76,26 +76,25 @@ const Sidebar = () => {
       <h1 style={{
         fontFamily: 'Playfair Display, serif',
         fontSize: '32px',
-        fontWeight: '500',
+        fontWeight: '400', // Updated to design.md weight
         color: '#111827',
         lineHeight: '1.2',
         marginBottom: '16px',
-        letterSpacing: '-0.025em',
+        letterSpacing: '-0.025em', // Updated to design.md spacing
       }}>
         Mohd Shakib
       </h1>
 
-
       {/* Bio */}
       <p style={{
         fontFamily: 'Inter, sans-serif',
-        fontSize: '14px',
+        fontSize: '16px', // label-md from design.md
         fontWeight: '400',
         color: '#6B7280',
-        lineHeight: '1.65',
+        lineHeight: '24px', // label-md line-height from design.md
         marginBottom: '28px',
       }}>
-        आदाब — I’m Shakib.What started as curiosity about how digital products work slowly turned into a habit of building them. I enjoy creating products that feel simple on the surface and complex underneath. Most of my time goes into experimenting with scalable systems, refining user experiences, and turning ideas into things people can actually use.
+        आदाब — I’m Shakib. What started as curiosity about how digital products work slowly turned into a habit of building them. I enjoy creating products that feel simple on the surface and complex underneath. Most of my time goes into experimenting with scalable systems, refining user experiences, and turning ideas into things people can actually use.
       </p>
 
       {/* CTA Buttons */}
@@ -136,10 +135,10 @@ const Sidebar = () => {
       {/* Tech Stack Carousel at the very bottom */}
       <div style={{ marginBottom: '0', overflow: 'hidden' }}>
         <p style={{
-          fontSize: '10px',
+          fontSize: '10.4px', // body-md from design.md
           fontWeight: '500',
           color: '#9CA3AF',
-          letterSpacing: '0.12em',
+          letterSpacing: '0.15em', // body-md from design.md
           textTransform: 'uppercase',
           marginBottom: '16px',
           fontFamily: 'Inter, sans-serif',
