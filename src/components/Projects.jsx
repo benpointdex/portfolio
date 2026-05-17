@@ -4,63 +4,52 @@ import { Link } from 'react-router-dom';
 // Project data with expanded info for the new detail view
 export const projects = [
   {
-    id: 'geomi',
-    name: 'Turning spreadsheet chaos into intelligent clarity',
-    displayName: 'Geomi',
-    description: 'Find the product design for Edgal, a business intelligence platform that helps teams move beyond spreadsheets and make sense of their data in real-time. We created a complex data-heavy tool into an intuitive experience that anyone can build and share internal resources with simple spreadsheet skills.',
-    shortDescription: 'Intelligent business clarity platform transforming complex spreadsheets into intuitive, real-time data visualizations and collaborative internal resources for modern enterprise teams.',
-    techStack: ['React', 'D3.js', 'Node.js', 'PostgreSQL', 'AWS', 'Tailwind'],
-    image: 'https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&q=80&w=1400&h=900',
+    id: 'auth-pulse',
+    name: 'Secure, scalable access from backend to browser',
+    displayName: 'AuthPulse',
+    description: 'AuthPulse is a complete identity and access management solution built for modern web applications. Featuring stateless JWT security, automatic token refreshing, and seamless Google OAuth2 integration, it provides a secure bridge between a robust Java backend and a responsive React dashboard.',
+    shortDescription: 'Bulletproof your web applications with this complete identity management stack. Features stateless token security and OAuth2 built seamlessly across Java and React.',
+    techStack: ['React', 'Spring Boot', 'PostgreSQL', 'Spring Security', 'Tailwind', 'Docker', 'OAuth2', 'JWT'],
+    image: '/auth-pulse/hero.bmp',
     color: '#52563F',
-    client: 'Edgal',
-    industry: 'Business Intelligence, Data Automation',
-    services: 'Product Design',
+    liveUrl: 'https://auth-back-latest.onrender.com/',
+    githubUrl: 'https://github.com/benpointdex/auth-system',
     screenshots: [
-      'https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&q=80&w=1400&h=900',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1400&h=900',
-      'https://images.unsplash.com/photo-1504868584819-f8e90526354a?auto=format&fit=crop&q=80&w=1400&h=900',
+      '/auth-pulse/hero.bmp',
+      '/auth-pulse/login.bmp',
+      '/auth-pulse/dashboard.bmp'
     ]
   },
   {
-    id: 'concierge',
-    name: 'Intelligent search for enterprise knowledge bases',
-    displayName: 'Concierge',
-    description: 'The trusted AI answer machine for your B2B docs. Semantic search over private knowledge bases with GPT-4 integration and team permissions. We built a system that understands natural language queries and returns precise answers with citations.',
-    shortDescription: 'AI-powered semantic search engine for B2B documentation, integrating GPT-4 to provide precise, cited answers from private enterprise knowledge bases.',
-    techStack: ['Next.js', 'OpenAI', 'Pinecone', 'Python', 'Docker', 'Redis'],
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1400&h=900',
+    id: 'shortify',
+    name: 'Making every click count with intelligent tracking',
+    displayName: 'Shortify',
+    description: 'Find the product design for Shortify, a secure URL management tool designed to convert complex links into manageable assets. Featuring a responsive interface and reliable backend architecture, the platform provides real-time click analytics and instant redirection for a frictionless user experience.',
+    shortDescription: 'Make every click count with this high-performance URL shortener. Offers instant redirection and intelligent analytics powered by a scalable Spring Boot architecture.',
+    techStack: ['React', 'TypeScript', 'Spring Boot', 'PostgreSQL', 'Spring Security', 'JWT'],
+    image: '/shortner/hero.bmp',
     color: '#D7D2C3',
-    client: 'Concierge AI',
-    industry: 'Enterprise Software, AI',
-    services: 'Full Stack Development',
+    liveUrl: 'https://short-ifyy.netlify.app/',
+    githubUrl: 'https://github.com/benpointdex/Url-Shortener',
     screenshots: [
-      'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1400&h=900',
-      'https://images.unsplash.com/photo-1664575602554-2087b04935a5?auto=format&fit=crop&q=80&w=1400&h=900',
-    ]
-  },
-  {
-    id: 'ikigai',
-    name: 'Finding purpose through daily habits',
-    displayName: 'Ikigai',
-    description: 'A habit and goal tracking platform inspired by the Japanese philosophy of purpose. Gamified streaks, AI insights, and beautiful data visualization. The app helps users align their daily activities with their long-term life goals.',
-    shortDescription: 'Purpose-driven habit tracking platform blending Japanese philosophy with AI insights, gamified streaks, and elegant data visualizations to align daily activities.',
-    techStack: ['React Native', 'Firebase', 'Redux', 'Chart.js', 'Node.js', 'Stripe'],
-    image: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?auto=format&fit=crop&q=80&w=1400&h=900',
-    color: '#9CA3AF',
-    client: 'Ikigai Labs',
-    industry: 'Wellness, Productivity',
-    services: 'Mobile Design, UX Research',
-    screenshots: [
-      'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?auto=format&fit=crop&q=80&w=1400&h=900',
-      'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1400&h=900',
+      '/shortner/hero.bmp',
+      '/shortner/login.bmp',
+      '/shortner/dashboard.bmp'
     ]
   }
 ];
 
 
 const ProjectCard = ({ project, isLast }) => {
+  const [isHovered, setIsHovered] = React.useState(false);
+
   return (
-    <Link to={`/project/${project.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <Link 
+      to={`/project/${project.id}`} 
+      style={{ textDecoration: 'none', color: 'inherit' }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div
         style={{
           height: '100%',
@@ -74,10 +63,11 @@ const ProjectCard = ({ project, isLast }) => {
           borderRadius: '16px',
           overflow: 'hidden',
           backgroundColor: '#E7E3D5',
-          border: '0.8px solid rgba(82, 86, 63, 0.12)',
+          border: `0.8px solid ${isHovered ? 'rgba(82, 86, 63, 0.14)' : 'rgba(82, 86, 63, 0.12)'}`,
           position: 'relative',
           width: '100%',
           aspectRatio: '16 / 9',
+          transition: 'border-color 0.8s ease',
         }}>
           <img
             src={project.image}
@@ -87,6 +77,8 @@ const ProjectCard = ({ project, isLast }) => {
               height: '100%',
               objectFit: 'cover',
               display: 'block',
+              transform: isHovered ? 'scale(1.008)' : 'scale(1)',
+              transition: 'transform 1s cubic-bezier(0.16, 1, 0.3, 1)',
             }}
           />
         </div>
@@ -295,6 +287,51 @@ const Projects = () => {
             }}
           />
         ))}
+      </div>
+
+      {/* Footer Status Indicators */}
+      <div style={{
+        position: 'absolute',
+        bottom: '12px',
+        left: '8px',
+        right: '8px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        pointerEvents: 'none',
+        zIndex: 100,
+      }}>
+        {/* Scroll Indicator */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '10.4px',
+          fontWeight: '500',
+          letterSpacing: '0.15em',
+          color: '#9CA3AF',
+          textTransform: 'uppercase',
+          opacity: currentIndex < projects.length - 1 ? 1 : 0,
+          transition: 'opacity 0.3s ease',
+        }}>
+          
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transform: 'translateY(1px)' }}>
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <polyline points="19 12 12 19 5 12"></polyline>
+          </svg>
+        </div>
+
+        {/* Project Counter */}
+        <div style={{
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '10.4px',
+          fontWeight: '500',
+          letterSpacing: '0.15em',
+          color: '#9CA3AF',
+        }}>
+          {String(currentIndex + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
+        </div>
       </div>
     </div>
   );
