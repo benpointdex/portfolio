@@ -40,7 +40,7 @@ export const projects = [
 ];
 
 
-const ProjectCard = ({ project, isLast }) => {
+const ProjectCard = ({ project, isMobile }) => {
   const [isHovered, setIsHovered] = React.useState(false);
 
   return (
@@ -52,7 +52,7 @@ const ProjectCard = ({ project, isLast }) => {
     >
       <div
         style={{
-          height: '100%',
+          height: isMobile ? 'auto' : '100%',
           display: 'flex',
           flexDirection: 'column',
           paddingBottom: '0', // Stuck to the bottom
@@ -68,6 +68,7 @@ const ProjectCard = ({ project, isLast }) => {
           width: '100%',
           aspectRatio: '16 / 9',
           transition: 'border-color 0.8s ease',
+          marginBottom: isMobile ? '20px' : '0',
         }}>
           <img
             src={project.image}
@@ -85,12 +86,12 @@ const ProjectCard = ({ project, isLast }) => {
 
         {/* Pushed towards the bottom with refined breathing room */}
         <div style={{ 
-          marginTop: 'auto', 
-          paddingBottom: '40px', // Increased padding for better balance
+          marginTop: isMobile ? '0' : 'auto', 
+          paddingBottom: isMobile ? '24px' : '40px', // Reduced breathing room on mobile
           paddingLeft: '8px', 
           paddingRight: '8px' 
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
             <div style={{
               width: '12px',
               height: '12px',
@@ -100,7 +101,7 @@ const ProjectCard = ({ project, isLast }) => {
             }} />
             <span style={{
               fontFamily: 'Playfair Display, serif',
-              fontSize: '24px',
+              fontSize: isMobile ? '22px' : '24px',
               fontWeight: '500',
               color: '#111827',
               letterSpacing: '-0.01em',
@@ -113,13 +114,13 @@ const ProjectCard = ({ project, isLast }) => {
             height: '0.8px', 
             width: '100%', 
             backgroundColor: 'rgba(82, 86, 63, 0.12)', 
-            marginBottom: '28px' 
+            marginBottom: '20px' 
           }} />
 
           <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: '1.8fr 1.2fr', 
-            gap: '60px',
+            display: 'flex',
+            flexDirection: isMobile ? 'column' : 'row',
+            gap: isMobile ? '24px' : '60px',
             alignItems: 'start' 
           }}>
             <p style={{
@@ -128,17 +129,19 @@ const ProjectCard = ({ project, isLast }) => {
               lineHeight: '1.6',
               color: 'rgba(17, 24, 39, 0.7)', // Slightly softer color
               margin: 0,
-              maxWidth: '600px'
+              maxWidth: isMobile ? '100%' : '600px'
             }}>
               {project.shortDescription}
             </p>
 
             <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '12px 32px',
-              borderLeft: '0.8px solid rgba(82, 86, 63, 0.12)',
-              paddingLeft: '40px'
+              display: isMobile ? 'flex' : 'grid',
+              flexWrap: isMobile ? 'wrap' : 'none',
+              gridTemplateColumns: isMobile ? 'none' : 'repeat(2, 1fr)',
+              gap: isMobile ? '8px 16px' : '12px 32px',
+              borderLeft: isMobile ? 'none' : '0.8px solid rgba(82, 86, 63, 0.12)',
+              paddingLeft: isMobile ? '0' : '40px',
+              width: isMobile ? '100%' : 'auto'
             }}>
               {project.techStack.map((tech, i) => (
                 <span key={i} style={{
@@ -161,7 +164,19 @@ const ProjectCard = ({ project, isLast }) => {
   );
 };
 
+
 const Projects = () => {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [dragOffset, setDragOffset] = React.useState(0); // live drag preview in px
   const isAnimating = React.useRef(false);
@@ -187,6 +202,7 @@ const Projects = () => {
 
   // --- Wheel ---
   React.useEffect(() => {
+    if (isMobile) return;
     const onWheel = (e) => {
       e.preventDefault();
       if (isAnimating.current) return;
@@ -201,10 +217,11 @@ const Projects = () => {
     };
     window.addEventListener('wheel', onWheel, { passive: false });
     return () => window.removeEventListener('wheel', onWheel);
-  }, [currentIndex, goTo, viewportH]);
+  }, [currentIndex, goTo, viewportH, isMobile]);
 
   // --- Touch ---
   React.useEffect(() => {
+    if (isMobile) return;
     const onTouchStart = (e) => { touchStartY.current = e.touches[0].clientY; };
     const onTouchMove = (e) => {
       e.preventDefault();
@@ -230,7 +247,25 @@ const Projects = () => {
       window.removeEventListener('touchmove', onTouchMove);
       window.removeEventListener('touchend', onTouchEnd);
     };
-  }, [currentIndex, dragOffset, goTo, viewportH]);
+  }, [currentIndex, dragOffset, goTo, viewportH, isMobile]);
+
+  if (isMobile) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        gap: '48px', 
+        width: '100%', 
+        paddingBottom: '48px' 
+      }}>
+        {projects.map((project) => (
+          <div key={project.id} style={{ width: '100%' }}>
+            <ProjectCard project={project} isMobile={true} />
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative', overflow: 'hidden' }}>
@@ -255,7 +290,7 @@ const Projects = () => {
               pointerEvents: isVisible ? 'auto' : 'none',
             }}
           >
-            <ProjectCard project={project} />
+            <ProjectCard project={project} isMobile={false} />
           </div>
         );
       })}
