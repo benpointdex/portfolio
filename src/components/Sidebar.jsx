@@ -91,19 +91,22 @@ const Sidebar = () => {
         fontSize: '16px', // label-md from design.md
         fontWeight: '400',
         color: '#6B7280',
-        lineHeight: '24px', // label-md line-height from design.md
+        lineHeight: '24px', // label-md from design.md
         marginBottom: '28px',
       }}>
-        आदाब — I’m Shakib. What started as curiosity about how digital products work slowly turned into a habit of building them. I enjoy creating products that feel simple on the surface and complex underneath. Most of my time goes into experimenting with scalable systems, refining user experiences, and turning ideas into things people can actually use.
+        Hey— I’m Shakib. I enjoy building products that feel simple to use and <span style={{ color: '#111827', fontWeight: '500' }}>thoughtful underneath</span>. Most of my work revolves around <span style={{ color: '#111827', fontWeight: '500' }}>scalable backend systems</span>, <span style={{ color: '#111827', fontWeight: '500' }}>modern web applications</span>, and turning ideas into experiences people can actually use.
       </p>
 
       {/* CTA Buttons */}
-      <div style={{ display: 'flex', gap: '10px', marginBottom: '40px' }}>
+      <div style={{ display: 'flex', marginBottom: '40px' }}>
         <a
-          href="mailto:john@example.com"
+          href="https://www.linkedin.com/in/mohd-shakib-4b3a03331"
+          target="_blank"
+          rel="noreferrer"
           style={{
             display: 'inline-flex',
             alignItems: 'center',
+            gap: '8px',
             padding: '9px 18px',
             backgroundColor: 'transparent',
             color: '#374151',
@@ -114,18 +117,24 @@ const Sidebar = () => {
             border: '1px solid rgba(82,86,63,0.3)',
             cursor: 'pointer',
             textDecoration: 'none',
-            transition: 'border-color 0.15s ease, color 0.15s ease',
+            transition: 'all 0.2s ease',
           }}
           onMouseEnter={e => {
+            e.currentTarget.style.color = '#52563F';
             e.currentTarget.style.borderColor = '#52563F';
-            e.currentTarget.style.color = '#111827';
+            e.currentTarget.querySelector('svg').style.transform = 'translateX(2px)';
           }}
           onMouseLeave={e => {
-            e.currentTarget.style.borderColor = 'rgba(82,86,63,0.3)';
             e.currentTarget.style.color = '#374151';
+            e.currentTarget.style.borderColor = 'rgba(82,86,63,0.3)';
+            e.currentTarget.querySelector('svg').style.transform = 'translateX(0px)';
           }}
         >
-          Let's Chat
+          Let's Connect
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)' }}>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
         </a>
       </div>
 
