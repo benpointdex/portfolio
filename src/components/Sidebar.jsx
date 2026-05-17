@@ -57,7 +57,7 @@ const Sidebar = () => {
             </svg>
           </a>
           <a
-            href="https://x.com"
+            href="https://x.com/shakib_cs"
             target="_blank"
             rel="noreferrer"
             title="X (Twitter)"
