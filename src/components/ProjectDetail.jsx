@@ -15,12 +15,7 @@ const ProjectDetail = () => {
   );
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      backgroundColor: '#F4F2EB',
-      padding: '80px 180px',
-      fontFamily: 'Inter, sans-serif'
-    }}>
+    <div className="detail-container">
       {/* Navigation */}
       <div style={{ marginBottom: '48px' }}>
         <Link
@@ -52,15 +47,7 @@ const ProjectDetail = () => {
         maxWidth: '800px',
         marginBottom: '48px',
       }}>
-        <h1 style={{
-          fontFamily: 'Playfair Display, serif',
-          fontSize: '80px', // display-lg per design.md
-          fontWeight: '400',
-          color: '#111827',
-          lineHeight: '84px', // display-lg per design.md
-          letterSpacing: '-0.025em', // display-lg per design.md
-          marginBottom: '24px'
-        }}>
+        <h1 className="detail-title">
           {project.name}
         </h1>
 
@@ -152,16 +139,7 @@ const ProjectDetail = () => {
           <div
             key={img + idx}
             id={`screenshot-box-${idx}`}
-            style={{
-              width: '100%',
-              borderRadius: '24px',
-              backgroundColor: '#E7E3D5',
-              border: '1px solid rgba(82, 86, 63, 0.1)',
-              padding: '80px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
+            className="gallery-item-box"
           >
             <img
               src={img}

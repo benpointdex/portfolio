@@ -10,14 +10,14 @@ export const projects = [
     description: 'AuthPulse is a complete identity and access management solution built for modern web applications. Featuring stateless JWT security, automatic token refreshing, and seamless Google OAuth2 integration, it provides a secure bridge between a robust Java backend and a responsive React dashboard.',
     shortDescription: 'Bulletproof your web applications with this complete identity management stack. Features stateless token security and OAuth2 built seamlessly across Java and React.',
     techStack: ['React', 'Spring Boot', 'PostgreSQL', 'Spring Security', 'Tailwind', 'Docker', 'OAuth2', 'JWT'],
-    image: '/auth-pulse/hero.bmp',
+    image: '/auth-pulse/hero.jpg',
     color: '#52563F',
     liveUrl: 'https://auth-back-latest.onrender.com/',
     githubUrl: 'https://github.com/benpointdex/auth-system',
     screenshots: [
-      '/auth-pulse/hero.bmp',
-      '/auth-pulse/login.bmp',
-      '/auth-pulse/dashboard.bmp'
+      '/auth-pulse/hero.jpg',
+      '/auth-pulse/login.jpg',
+      '/auth-pulse/dashboard.jpg'
     ]
   },
   {
@@ -27,14 +27,14 @@ export const projects = [
     description: 'Find the product design for Shortify, a secure URL management tool designed to convert complex links into manageable assets. Featuring a responsive interface and reliable backend architecture, the platform provides real-time click analytics and instant redirection for a frictionless user experience.',
     shortDescription: 'Make every click count with this high-performance URL shortener. Offers instant redirection and intelligent analytics powered by a scalable Spring Boot architecture.',
     techStack: ['React', 'TypeScript', 'Spring Boot', 'PostgreSQL', 'Spring Security', 'JWT'],
-    image: '/shortner/hero.bmp',
+    image: '/shortner/hero.jpg',
     color: '#D7D2C3',
     liveUrl: 'https://short-ifyy.netlify.app/',
     githubUrl: 'https://github.com/benpointdex/Url-Shortener',
     screenshots: [
-      '/shortner/hero.bmp',
-      '/shortner/login.bmp',
-      '/shortner/dashboard.bmp'
+      '/shortner/hero.jpg',
+      '/shortner/login.jpg',
+      '/shortner/dashboard.jpg'
     ]
   }
 ];

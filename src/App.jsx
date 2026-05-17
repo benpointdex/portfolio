@@ -22,35 +22,14 @@ function App() {
 }
 
 const Home = () => (
-  <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: '#F4F2EB' }}>
+  <div className="layout-container">
     {/* Fixed Left Sidebar */}
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '28.5%',
-      height: '100vh',
-      padding: '40px 48px 0',
-      display: 'flex',
-
-
-      flexDirection: 'column',
-      backgroundColor: '#F4F2EB',
-      borderRight: '1px solid rgba(82,86,63,0.1)',
-      zIndex: 10,
-    }}>
+    <div className="layout-sidebar">
       <Sidebar />
     </div>
 
     {/* Scrollable Right Content */}
-    <div style={{
-      marginLeft: '28.5%',
-      width: '71.5%',
-      padding: '80px 80px 0',
-      height: '100vh',
-      position: 'relative',
-      overflow: 'hidden', // clips the off-screen cards sliding in/out
-    }}>
+    <div className="layout-content">
       <Projects />
     </div>
   </div>
