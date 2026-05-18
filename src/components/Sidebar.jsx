@@ -13,19 +13,34 @@ const Sidebar = () => {
       }}>
         {/* Avatar */}
         <div style={{
-          width: '52px',
-          height: '52px',
+          width: '68px',
+          height: '68px',
           borderRadius: '50%',
-          backgroundColor: '#52563F',
+          overflow: 'hidden',
+          backgroundColor: 'transparent',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           color: '#F4F2EB',
           fontWeight: '600',
-          fontSize: '18px',
+          fontSize: '22px',
           fontFamily: 'Inter, sans-serif',
         }}>
-          S
+          <img
+            src="/profile/profile.jpeg"
+            alt="Mohd Shakib"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+              e.currentTarget.parentElement.style.backgroundColor = '#52563F';
+              e.currentTarget.parentElement.innerText = 'S';
+            }}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              borderRadius: '50%',
+            }}
+          />
         </div>
 
         {/* Social Icons Parallel with Avatar */}
