@@ -66,7 +66,6 @@ const ProjectCard = ({ project, isMobile }) => {
           border: `0.8px solid ${isHovered ? 'rgba(82, 86, 63, 0.14)' : 'rgba(82, 86, 63, 0.12)'}`,
           position: 'relative',
           width: '100%',
-          aspectRatio: '16 / 9',
           transition: 'border-color 0.8s ease',
           marginBottom: isMobile ? '20px' : '0',
         }}>
@@ -75,8 +74,7 @@ const ProjectCard = ({ project, isMobile }) => {
             alt={project.displayName}
             style={{
               width: '100%',
-              height: '100%',
-              objectFit: 'cover',
+              height: 'auto',
               display: 'block',
               transform: isHovered ? 'scale(1.008)' : 'scale(1)',
               transition: 'transform 1s cubic-bezier(0.16, 1, 0.3, 1)',
