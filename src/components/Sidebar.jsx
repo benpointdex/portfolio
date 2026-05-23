@@ -59,7 +59,7 @@ const Sidebar = () => {
             </svg>
           </a>
           <a
-            href="https://www.linkedin.com/in/mohd-shakib-4b3a03331?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+            href="https://www.linkedin.com/in/mohd-shakib-4b3a03331/?utm_source=share_via&utm_content=profile&utm_medium=member_android"
             target="_blank"
             rel="noreferrer"
             title="LinkedIn"
@@ -115,7 +115,7 @@ const Sidebar = () => {
       {/* CTA Buttons */}
       <div style={{ display: 'flex', marginBottom: '40px' }}>
         <a
-          href="https://www.linkedin.com/in/mohd-shakib-4b3a03331"
+          href="https://www.linkedin.com/in/mohd-shakib-4b3a03331/"
           target="_blank"
           rel="noreferrer"
           style={{
@@ -152,6 +152,7 @@ const Sidebar = () => {
           </svg>
         </a>
       </div>
+
 
       {/* Spacer */}
       <div style={{ flex: 1 }} />
