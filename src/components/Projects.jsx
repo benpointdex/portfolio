@@ -4,20 +4,59 @@ import { Link } from 'react-router-dom';
 // Project data with expanded info for the new detail view
 export const projects = [
   {
+    id: 'cinnamon',
+    name: 'Stop rewriting code with AI-native semantic duplicate detection',
+    displayName: 'Cinnamon',
+    description: 'Cinnamon is an AI-native code quality engine and MCP server that catches when coding agents duplicate logic already existing in the codebase. Powered by Tree-sitter AST parsing, 384-dimensional ONNX vector embeddings, and PostgreSQL pgvector, it surfaces exact, renamed, and deep semantic clones in real-time directly inside Cursor and Claude.',
+    shortDescription: 'Real-time AI code duplication detection MCP server. Catches exact, renamed, and semantic duplicates using Tree-sitter AST parsing and pgvector embeddings.',
+    techStack: ['Model Context Protocol', 'Java 21', 'Spring Boot', 'Tree-sitter', 'pgvector', 'PostgreSQL', 'Next.js', 'TypeScript', 'Docker'],
+    video: '/cinnamon/hero.mp4',
+    videoWebm: '/cinnamon/hero.webm',
+    image: '/cinnamon/hero.webp',
+    color: '#E0447D',
+    liveUrl: 'https://cinnamon-mcp.vercel.app/',
+    githubUrl: 'https://github.com/benpointdex/cinnamon',
+    screenshots: [
+      '/cinnamon/hero.webp',
+      '/cinnamon/screen1.webp',
+      '/cinnamon/screen2.webp',
+      '/cinnamon/screen3.webp'
+    ]
+  },
+  {
+    id: 'patienta',
+    name: 'High-performance distributed healthcare ERP & clinical microservices',
+    displayName: 'Patienta',
+    description: 'Patienta (Precision Portal) is a high-performance, event-driven distributed healthcare management ecosystem built on modern microservices. It streamlines clinical intake, appointment lifecycle scheduling with Apache Kafka event streaming, synchronous gRPC billing transactions, and role-based clinician portals with real-time responsive dashboards.',
+    shortDescription: 'Enterprise healthcare management ecosystem built with Java 21, Spring Boot, gRPC, and Kafka. Features real-time appointment streaming, automated billing, and interactive clinician portals.',
+    techStack: ['Java 21', 'Spring Boot', 'gRPC', 'Apache Kafka', 'PostgreSQL', 'React 19', 'TypeScript', 'Docker'],
+    video: '/patienta/hero.mp4',
+    videoWebm: '/patienta/hero.webm',
+    image: '/patienta/hero.webp',
+    color: '#0D8D9C',
+    liveUrl: 'https://patienta.vercel.app/',
+    githubUrl: 'https://github.com/benpointdex/patient-management',
+    screenshots: [
+      '/patienta/hero.webp',
+      '/patienta/screen1.webp',
+      '/patienta/screen2.webp'
+    ]
+  },
+  {
     id: 'auth-pulse',
     name: 'Secure, scalable access from backend to browser',
     displayName: 'AuthPulse',
     description: 'AuthPulse is a complete identity and access management solution built for modern web applications. Featuring stateless JWT security, automatic token refreshing, and seamless Google OAuth2 integration, it provides a secure bridge between a robust Java backend and a responsive React dashboard.',
     shortDescription: 'Bulletproof your web applications with this complete identity management stack. Features stateless token security and OAuth2 built seamlessly across Java and React.',
     techStack: ['React', 'Spring Boot', 'PostgreSQL', 'Spring Security', 'Tailwind', 'Docker', 'OAuth2', 'JWT'],
-    image: '/auth-pulse/hero.jpg',
+    image: '/auth-pulse/hero.webp',
     color: '#52563F',
     liveUrl: 'https://auth-back-latest.onrender.com/',
     githubUrl: 'https://github.com/benpointdex/auth-system',
     screenshots: [
-      '/auth-pulse/hero.jpg',
-      '/auth-pulse/login.jpg',
-      '/auth-pulse/dashboard.jpg'
+      '/auth-pulse/hero.webp',
+      '/auth-pulse/login.webp',
+      '/auth-pulse/dashboard.webp'
     ]
   },
   {
@@ -27,28 +66,24 @@ export const projects = [
     description: 'Find the product design for Shortify, a secure URL management tool designed to convert complex links into manageable assets. Featuring a responsive interface and reliable backend architecture, the platform provides real-time click analytics and instant redirection for a frictionless user experience.',
     shortDescription: 'Make every click count with this high-performance URL shortener. Offers instant redirection and intelligent analytics powered by a scalable Spring Boot architecture.',
     techStack: ['React', 'TypeScript', 'Spring Boot', 'PostgreSQL', 'Spring Security', 'JWT'],
-    image: '/shortner/hero.jpg',
+    image: '/shortner/hero.webp',
     color: '#D7D2C3',
     liveUrl: 'https://short-ifyy.netlify.app/',
     githubUrl: 'https://github.com/benpointdex/Url-Shortener',
     screenshots: [
-      '/shortner/hero.jpg',
-      '/shortner/login.jpg',
-      '/shortner/dashboard.jpg'
+      '/shortner/hero.webp',
+      '/shortner/login.webp',
+      '/shortner/dashboard.webp'
     ]
   }
 ];
 
 
 const ProjectCard = ({ project, isMobile }) => {
-  const [isHovered, setIsHovered] = React.useState(false);
-
   return (
     <Link 
       to={`/project/${project.id}`} 
       style={{ textDecoration: 'none', color: 'inherit' }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       <div
         style={{
@@ -63,23 +98,41 @@ const ProjectCard = ({ project, isMobile }) => {
           borderRadius: '16px',
           overflow: 'hidden',
           backgroundColor: '#E7E3D5',
-          border: `0.8px solid ${isHovered ? 'rgba(82, 86, 63, 0.14)' : 'rgba(82, 86, 63, 0.12)'}`,
+          border: '0.8px solid rgba(82, 86, 63, 0.12)',
           position: 'relative',
           width: '100%',
-          transition: 'border-color 0.8s ease',
           marginBottom: isMobile ? '20px' : '0',
         }}>
-          <img
-            src={project.image}
-            alt={project.displayName}
-            style={{
-              width: '100%',
-              height: 'auto',
-              display: 'block',
-              transform: isHovered ? 'scale(1.008)' : 'scale(1)',
-              transition: 'transform 1s cubic-bezier(0.16, 1, 0.3, 1)',
-            }}
-          />
+          {project.video ? (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              poster={project.image}
+              style={{
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+                objectFit: 'cover',
+              }}
+            >
+              {project.videoWebm && <source src={project.videoWebm} type="video/webm" />}
+              <source src={project.video} type="video/mp4" />
+            </video>
+          ) : (
+            <img
+              src={project.image}
+              alt={project.displayName}
+              loading="lazy"
+              style={{
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+              }}
+            />
+          )}
         </div>
 
         {/* Pushed towards the bottom with refined breathing room */}

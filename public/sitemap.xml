@@ -3,9 +3,25 @@
   <!-- Home Page -->
   <url>
     <loc>https://mohdshakib.vercel.app/</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- Cinnamon Project Page -->
+  <url>
+    <loc>https://mohdshakib.vercel.app/project/cinnamon</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Patienta Project Page -->
+  <url>
+    <loc>https://mohdshakib.vercel.app/project/patienta</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <!-- AuthPulse Project Page -->
